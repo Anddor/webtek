@@ -1,0 +1,19 @@
+#videoWrapper {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto
+}
+#mainVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0;
+    z-index: -1;
+}
+#navbar {
+    
+}
+#navbar ul {
+    
+    list-style-type: none;
+}
