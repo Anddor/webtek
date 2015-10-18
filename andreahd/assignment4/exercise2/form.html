@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<title>Form</title>
+	</head>
+	<body>
+        <h1>IT2805 Web Technology</h1>
+        <p> Please fill out this form</p>
+        <form action="http://www.idi.ntnu.no/~michailg/IT2805/form.php" method="post">
+            Name:
+            <input type="text" name="name" required>
+            <br>
+            Email:
+            <input type="text" name="email" required>
+            <br>
+            Address:  
+            <input type="text" name="address">
+            (Optional)
+            <br>
+            Phone number:
+            <input type="text" name="phone">
+            (Optional)
+            <br><hr>
+            
+            What type of student are you?: <br>
+            <input type="radio" name="year" value="1" required> 1st Year
+            <br>
+            <input type="radio" name="year" value="2" required> 2nd Year
+            <br>
+            <input type="radio" name="year" value="3" required> 3rd Year
+            <br>
+            <input type="radio" name="year" value="4" required> 4th Year
+            <br><hr>
+            Expected start date:
+            <input name="startDate" type="date" required>
+            <br><hr>
+            Choose all classes you are interested in:
+            <br>
+            <input type="checkbox" name="classes" value="ITX1001">
+            ITX1001: HTML Basics
+            <br>
+            <input type="checkbox" name="classes" value="ITX1002">
+            ITX1002: URLs and Site Structures
+            <br>
+            <input type="checkbox" name="classes" value="
+ITX2001">
+            ITX2001: Introduction to Cascading Style Sheets (CSS)
+            <br>
+            <input type="checkbox" name="classes" value="ITX2002">
+            ITX2002: CSS Properties and Applications
+            <br>
+            <input type="checkbox" name="classes" value="ABC1001">
+            ABC1001: Working with Multimedia on the Web
+            <br>
+            <input type="checkbox" name="classes" value="JSX1000">
+            JSX1000: Introduction to JavaScript
+            <br>
+            <input type="checkbox" name="classes" value="JSX1040">
+            JSX1040: JavaScript: DOM
+            <br>
+            <input type="checkbox" name="classes" value="XML1000">
+            XML1000: XML: Formatting Namespace Trees
+            <br><hr>
+            Do you have questions or comments? Write them here.
+            <br>
+            <textarea name="comments"></textarea>
+            <br>
+        
+            <input type="submit">
+        
+        </form>
+        
+		
+	</body>
+</html>

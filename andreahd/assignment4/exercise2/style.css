@@ -1,0 +1,14 @@
+form {
+    font-family: sans-serif;
+    line-height: 1.6
+}
+form br {
+    line-height: 0.5
+}
+input:valid {
+    
+}
+input:invalid {
+    border: 2px solid red;
+
+}
