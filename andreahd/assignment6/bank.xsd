@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="">
+  <!-- definition of simple type elements -->
+  <xs:element name="balance" type="xs:string"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="address" type="xs:string"/>
+  <xs:element name="since" type="xs:date"/>
+  <!-- definition of attributes -->
+  <xs:attribute name="interest" type="xs:string"/>
+  <xs:attribute name="id" type="xs:string"/>
+  <xs:attribute name="customer-id" type="xs:string"/>
+  <xs:attribute name="account-id" type="xs:string"/>
+  <!-- definition of complex type elements -->
+  <xs:element name="accounts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="friend-of" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="since"/>
+        <xs:element ref="qualification"/>
+        <!-- the simple type elements are referenced using
+        the "ref" attribute                       -->
+        <!-- the definition of the cardinality is done
+        when the elements are referenced         -->
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="customers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="title"/>
+        <xs:element ref="author"/>
+        <xs:element ref="character" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute ref="isbn"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
