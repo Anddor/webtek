@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bank SYSTEM "bank.dtd">
 <bank>
-
   <accounts>
     <savings_accounts>
       <savings_account id="a1" interest="0.03">
