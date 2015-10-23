@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE bank SYSTEM "bank.dtd">
-<bank>
+<!DOCTYPE bank 
+[<!ELEMENT bank (accounts,customers,customer_accounts)>
+<!ELEMENT accounts (savings_accounts, checking_accounts)>
+<!ELEMENT savings_accounts (savings_account*)>
+<!ELEMENT checking_accounts (checking_account*)>
+<!ELEMENT savings_account (balance)>
+<!ELEMENT checking_account (balance)>
+<!ELEMENT balance (#PCDATA)>
+<!ELEMENT customers (customer*)>
+<!ELEMENT customer (name, address)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT customer_accounts (customer_account*)>
+<!ELEMENT customer_account EMPTY>
+
+<!ATTLIST savings_account
+id ID #REQUIRED
+interest CDATA #REQUIRED
+>
+<!ATTLIST checking_account id ID #REQUIRED>
+<!ATTLIST customer id ID #REQUIRED>
+<!ATTLIST customer_account customer_id IDREF #REQUIRED>
+<!ATTLIST customer_account account_id IDREF #REQUIRED>
+]>
+<bank
+    xmlns="http://www.w3schools.com/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="folk.ntnu.no/andreahd/assignment6 http://folk.ntnu.no/andreahd/assignment6/bank.xsd"
+>
   <accounts>
     <savings_accounts>
       <savings_account id="a1" interest="0.03">

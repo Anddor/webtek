@@ -17,41 +17,44 @@
             <xs:minExclusive value="0" />
         </xs:restriction>
     </xs:simpleType>
+    <xs:simpleType name="balanceType">
+        <xs:restriction base="xs:float">
+            <xs:minExclusive value="-5000"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <!-- definition of simple type elements -->
-    <xs:element name="balance" type="xs:integer" />
-    <xs:element name="name" type="xs:string" />
-    <xs:element name="address" type="xs:string" />
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="address" type="xs:string"/>
+    <xs:element name="balance" type="balanceType"/>
+    
     <!-- definition of attributes -->
-    <xs:attribute name="interest" type="interestType" />
-    <xs:attribute name="id" type="accountIdType" />
-    <xs:attribute name="customer_id" type="customerIdType" />
-    <xs:attribute name="account_id" type="accountIdType" />
+    <xs:attribute name="interest" type="interestType"/>
+    <xs:attribute name="id" type="accountIdType"/>
+    <xs:attribute name="customer_id" type="customerIdType"/>
+    <xs:attribute name="account_id" type="accountIdType"/>
 
     <!-- definition of complex type elements -->
     <xs:element name="customer">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="name" />
-                <xs:element ref="address" />
+                <xs:element ref="name"/>
+                <xs:element ref="address"/>
             </xs:sequence>
-            <xs:attribute ref="id" />
+            <xs:attribute ref="id"/>
         </xs:complexType>
         <xs:key name="customerId">
             <xs:selector xpath="customer"/>
             <xs:field xpath="id"/>
         </xs:key>
     </xs:element>
-
+    
     <xs:element name="account">
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="balance" />
             </xs:sequence>
             <xs:attribute ref="id" />
-            <xs:restriction>
-                <xs:minExclusive value="-5000"/>
-            </xs:restriction>
         </xs:complexType>        
         <xs:key name="accountId">
             <xs:selector xpath="account"/>
@@ -60,19 +63,23 @@
     </xs:element>
 
     <xs:element name="checking_account">
-        <xs:complexContent>
-            <xs:extension base="account">
-            </xs:extension>
-        </xs:complexContent>
-
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="account">
+                    <!-- Nothing to add? -->
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
     </xs:element>
 
     <xs:element name="savings_account">
-        <xs:complexContent>
-            <xs:extension base="account">
-                <xs:attribute ref="interest" />
-            </xs:extension>
-        </xs:complexContent>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="account">
+                    <xs:attribute ref="interest"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
     </xs:element>
 
     <xs:element name="savings_accounts">
@@ -101,14 +108,14 @@
 
     <xs:element name="customer_account">
         <xs:complexType>
-            <xs:attribute ref="customer_id" />
-            <xs:attribute ref="account_id" />
+            <xs:attribute ref="customer_id"/>
+            <xs:attribute ref="account_id"/>
         </xs:complexType>
-        <xs:keyref name="customerRef">
+        <xs:keyref name="customerRef" refer="customerId">
             <xs:selector xpath="customer_account"/>
             <xs:field xpath="customer_id"/>
         </xs:keyref>
-        <xs:keyref name="accountRef">
+        <xs:keyref name="accountRef" refer="accountId">
             <xs:selector xpath="customer_account"/>
             <xs:field xpath="account_id"/>
         </xs:keyref>
@@ -117,14 +124,14 @@
     <xs:element name="customers">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="customer" maxOccurs="unbounded" />
+                <xs:element ref="customer" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="customer_accounts">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="customer_account" maxOccurs="unbounded" />
+                <xs:element ref="customer_account" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
